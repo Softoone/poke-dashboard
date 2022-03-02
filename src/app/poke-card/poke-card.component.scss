@@ -17,6 +17,14 @@
   flex-direction: row;
 }
 
+.poke-card #nome-poke {
+  padding-left: 10px;
+}
+
+.poke-card #type-poke {
+  padding-right: 10px;
+}
+
 .poke-card #sprite-poke {
   background-color: #fff;
   border: solid;
@@ -24,4 +32,29 @@
   height: 100px;
   width: 100px;
   align-self: center;
+}
+
+.poke-card .stats-poke {
+  max-width: 120px;
+}
+
+.poke-card #stats-list {
+  list-style-type: none;
+  margin-right: 0;
+}
+
+.poke-card .addit-poke-info {
+  display: flex;
+  justify-content: space-around;
+}
+
+.poke-card .addit-values {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 10px;
+}
+
+.poke-card .statline {
+  position: absolute;
+  left: 200px;
 }
