@@ -1,4 +1,6 @@
-import { Component } from "@angular/core";
+import { PokeApiService } from './../service/poke-api.service';
+
+import { Component, OnInit } from "@angular/core";
 
 @Component({
     selector:'app-poke-dashboard',
@@ -6,6 +8,20 @@ import { Component } from "@angular/core";
     styleUrls:['./poke-dashboard.component.scss'],
 
 })
-export class PokeDashboardComponent{
+export class PokeDashboardComponent implements OnInit{
+
+  service : PokeApiService;
+
+  constructor(pokeService : PokeApiService) {
+    this.service = pokeService;
+  }
+
+  getRandomPoke() {
+    var response = this.service.get(410);
+  }
+
+  ngOnInit(): void {
+
+  }
 
 }
