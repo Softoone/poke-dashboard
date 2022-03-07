@@ -1,0 +1,14 @@
+<table class="p-table">
+  <tr>
+    <th>English Name</th>
+    <th>Ability(ies)</th>
+    <th>Type(s) </th>
+    <th>Stronger Stat</th>
+  </tr>
+<tr *ngFor="let poke of pokemonRow">
+  <td>{{poke?.name}}</td>
+  <td>{{poke?.abilities.join(" / ")}}</td>
+  <td>{{poke?.types}}</td>
+  <td>{{poke?.stats.higherStat}}</td>
+</tr>
+</table>

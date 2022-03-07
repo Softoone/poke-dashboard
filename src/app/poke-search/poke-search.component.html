@@ -1,0 +1,8 @@
+<div>
+  <form class="poke-search" (ngSubmit)="getPokemon()">
+    <input type="text" placeholder="Insert a pokemon name" [(ngModel)]="pokename" name="pokemon-name">
+    <button type="submit">GO</button>
+  </form>
+    or
+  <button (click)="getRandomPoke()">Generate Random Pokemon</button>
+</div>

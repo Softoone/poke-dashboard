@@ -16,13 +16,21 @@ export class PokeApiService {
   constructor(private http : HttpClient) { }
 
   async get(search: number | String) : Promise<Pokemon> {
-    var response = await lastValueFrom(this.http.get<Pokemon>(`${this.apiUrl+search}`));
-    console.log(response.stats);
-    return this.setPokemon(response);
+
+    if (typeof search === "string") {
+      search = search.toLowerCase();
+    }
+
+    try {
+      var response = await lastValueFrom(this.http.get<Pokemon>(`${this.apiUrl+search}`));
+      return this.setPokemon(response);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   private setPokemon(pokeData : any) : Pokemon {
-    var pokemon : Pokemon = {
+    let pokemon : Pokemon = {
       id: pokeData.id,
       name: pokeData.name,
       weight: pokeData.weight / 10,
@@ -34,28 +42,69 @@ export class PokeApiService {
         defense: pokeData.stats[2].base_stat,
         spAttack: pokeData.stats[3].base_stat,
         spDefense: pokeData.stats[4].base_stat,
-        speed: pokeData.stats[5].base_stat
+        speed: pokeData.stats[5].base_stat,
+        higherStat: "vazio"
       },
-      abilities: [pokeData.abilities[0].ability.name],
+      abilities: [],
       sprites: {
         art: this.spriteStatic+`${pokeData.id}.png`,
         animation: this.spriteAnimated+`${pokeData.id}.gif`
       }
     };
 
+    for (let i = 0; i < pokeData.abilities.length; i++) {
+      this.checkHidden(pokeData.abilities[i],pokemon)
+    }
+    pokemon.stats.higherStat = this.setHigherStat(pokemon);
+
+    // Setting double type pokes
     if (pokeData.types.length > 1) {
       pokemon.types.push(pokeData.types[1].type.name);
     }
 
-    if (pokeData.abilities.length > 2) {
-      pokemon.abilities.push(pokeData.abilities[1].ability.name);
-      pokemon.abilities.push(pokeData.abilities[2].ability.name+"*");
-    }else{
-      pokemon.abilities.push(pokeData.abilities[1].ability.name + "*");
-    }
-
     return pokemon;
   }
+
+  private checkHidden(index : any, pokemon : Pokemon) {
+    if (index.is_hidden) {
+      pokemon.abilities.push(index.ability.name + "*");
+    }else{
+      pokemon.abilities.push(index.ability.name);
+    }
+  }
+
+  private setHigherStat(p : Pokemon) : String {
+    let stats = [];
+    stats.push(p.stats.hp);
+    stats.push(p.stats.attack);
+    stats.push(p.stats.spAttack);
+    stats.push(p.stats.defense);
+    stats.push(p.stats.spDefense);
+    stats.push(p.stats.speed);
+
+    let max = Math.max.apply(null,stats)
+    let strongerStat =  this.defineStat(stats.indexOf(max));
+
+    return strongerStat;
+  }
+
+  private defineStat(index : number) : String {
+    switch (index) {
+      case 0:
+        return "HP";
+      case 1:
+        return "ATK"
+      case 2:
+        return "DEF"
+      case 3:
+        return "SP.ATK"
+      case 4:
+        return "SP.DEF"
+      case 5:
+        return "SPD"
+    }
+  }
+
 
 
 }

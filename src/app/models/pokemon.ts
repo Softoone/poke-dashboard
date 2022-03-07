@@ -19,4 +19,5 @@ type Stats = {
   spAttack : number;
   spDefense : number;
   speed : number;
+  higherStat : String
 }
