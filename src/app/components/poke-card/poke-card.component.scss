@@ -3,7 +3,7 @@
   flex-direction: column;
   margin-left: 20px;
   margin-top: 25px;
-  width: 250px;
+  width: 220px;
   height: 350px;
   background-color: yellow;
   border-style: solid;
@@ -29,13 +29,13 @@
   background-color: #fff;
   border: solid;
   border-radius: 25%;
-  height: 100px;
-  width: 100px;
+  height: 130px;
+  width: 90px;
   align-self: center;
 }
 
 .poke-card .stats-poke {
-  max-width: 120px;
+  max-width: 100px;
 }
 
 .poke-card #stats-list {
@@ -46,12 +46,17 @@
 .poke-card .addit-poke-info {
   display: flex;
   justify-content: space-around;
+  height: 20px;
+
+  h4 {
+    font-weight: bold;
+  }
 }
 
 .poke-card .addit-values {
   display: flex;
   justify-content: space-around;
-  padding-bottom: 10px;
+  height: 20px;
 }
 
 .poke-card .statline {

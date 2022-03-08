@@ -1,4 +1,3 @@
-import { Pokemon } from './models/pokemon';
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,9 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'poke-dashboard';
-  pokemonList : Pokemon[] = [];
 
-  sendToTable(event : Pokemon) {
-    this.pokemonList.push(event);
-  }
 }

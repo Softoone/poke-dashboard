@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Pokemon } from '../models/pokemon';
-import { PokeApiService } from '../service/poke-api.service';
+import { Pokemon } from '../../models/pokemon';
+import { PokeApiService } from '../../service/poke-api.service';
 
 @Component({
   selector: 'app-poke-search',
@@ -9,7 +9,7 @@ import { PokeApiService } from '../service/poke-api.service';
 })
 export class PokeSearchComponent implements OnInit {
 
-  pokename : String | number;
+  pokename : string | number;
   service : PokeApiService;
   @Output() throwPokemon = new EventEmitter<Pokemon>();
 

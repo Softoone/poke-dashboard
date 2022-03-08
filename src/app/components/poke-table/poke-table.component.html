@@ -5,8 +5,8 @@
     <th>Type(s) </th>
     <th>Stronger Stat</th>
   </tr>
-<tr *ngFor="let poke of pokemonRow">
-  <td>{{poke?.name}}</td>
+<tr *ngFor="let poke of pokemonRow; let i = index">
+  <td (dblclick)="openPokemonCard(i)">{{poke?.name}}</td>
   <td>{{poke?.abilities.join(" / ")}}</td>
   <td>{{poke?.types}}</td>
   <td>{{poke?.stats.higherStat}}</td>

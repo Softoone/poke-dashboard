@@ -1,0 +1,7 @@
+<h1>Quem é esse Pokémon?</h1>
+<app-poke-search (throwPokemon)="catchPokemon($event)"></app-poke-search>
+<app-poke-table (sendToCard)="catchInfoToCard($event)" [pokemonRow]="pokemonList"></app-poke-table>
+<div *ngIf="uniquePokemon">
+  <app-poke-card></app-poke-card>
+</div>
+

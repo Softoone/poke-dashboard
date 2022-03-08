@@ -15,21 +15,26 @@ export class PokeApiService {
 
   constructor(private http : HttpClient) { }
 
-  async get(search: number | String) : Promise<Pokemon> {
+  async get(search: number | string) : Promise<Pokemon> {
 
     if (typeof search === "string") {
       search = search.toLowerCase();
     }
 
     try {
-      var response = await lastValueFrom(this.http.get<Pokemon>(`${this.apiUrl+search}`));
+      let response = await lastValueFrom(this.http.get<Pokemon>(`${this.apiUrl+search}`));
       return this.setPokemon(response);
     } catch (error) {
       console.log(error);
     }
   }
 
-  private setPokemon(pokeData : any) : Pokemon {
+  async getSprite(url : string) {
+    let img = await lastValueFrom(this.http.get(url))
+    console.log(img);
+  }
+
+  private async setPokemon(pokeData : any) : Promise<Pokemon> {
     let pokemon : Pokemon = {
       id: pokeData.id,
       name: pokeData.name,
@@ -73,12 +78,12 @@ export class PokeApiService {
     }
   }
 
-  private setHigherStat(p : Pokemon) : String {
+  private setHigherStat(p : Pokemon) : string {
     let stats = [];
     stats.push(p.stats.hp);
     stats.push(p.stats.attack);
-    stats.push(p.stats.spAttack);
     stats.push(p.stats.defense);
+    stats.push(p.stats.spAttack);
     stats.push(p.stats.spDefense);
     stats.push(p.stats.speed);
 
@@ -88,7 +93,7 @@ export class PokeApiService {
     return strongerStat;
   }
 
-  private defineStat(index : number) : String {
+  private defineStat(index : number) : string {
     switch (index) {
       case 0:
         return "HP";

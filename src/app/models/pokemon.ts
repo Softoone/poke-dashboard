@@ -1,14 +1,14 @@
 export interface Pokemon {
-  name : String;
+  name : string;
   weight : number;
   height : number;
   types : String[];
   stats : Stats;
   id : number;
-  abilities : String[];
+  abilities : string[];
   sprites : {
-    art : String
-    animation : String
+    art : string
+    animation : string
   }
 }
 
@@ -19,5 +19,5 @@ type Stats = {
   spAttack : number;
   spDefense : number;
   speed : number;
-  higherStat : String
+  higherStat : string
 }
