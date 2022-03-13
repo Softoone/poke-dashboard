@@ -1,5 +1,6 @@
+import { SimplePokemon } from './../models/simple-pokemon';
 import { Pokemon } from './../models/pokemon';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 
@@ -9,9 +10,10 @@ import { lastValueFrom } from 'rxjs';
 
 export class PokeApiService {
 
-  private readonly apiUrl = "https://pokeapi.co/api/v2/pokemon/";
+  private readonly apiUrl = "https://pokeapi.co/api/v2/pokemon";
   private readonly spriteStatic = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
   private readonly spriteAnimated = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/";
+  private readonly lastGenerationPokemon = 898;
 
   constructor(private http : HttpClient) { }
 
@@ -22,19 +24,25 @@ export class PokeApiService {
     }
 
     try {
-      let response = await lastValueFrom(this.http.get<Pokemon>(`${this.apiUrl+search}`));
-      return this.setPokemon(response);
+      let response = await lastValueFrom(this.http.get<Pokemon>(this.apiUrl + "/" + search.toString()));
+      let pokemon =  this.setPokemon(response);
+
+      return pokemon;
+
     } catch (error) {
       console.log(error);
     }
   }
 
-  async getSprite(url : string) {
-    let img = await lastValueFrom(this.http.get(url))
-    console.log(img);
+  getAllPokemon() {
+    return this.http.get<SimplePokemon>(this.apiUrl + `?limit=${this.lastGenerationPokemon}` + '&offset=0');
   }
 
-  private async setPokemon(pokeData : any) : Promise<Pokemon> {
+  getSpecialForms() {
+    return this.http.get<SimplePokemon>(this.apiUrl + `?limit=${10001}` + '&offset=0')
+  }
+
+  private setPokemon(pokeData : any) : Pokemon {
     let pokemon : Pokemon = {
       id: pokeData.id,
       name: pokeData.name,
@@ -109,7 +117,4 @@ export class PokeApiService {
         return "SPD"
     }
   }
-
-
-
 }

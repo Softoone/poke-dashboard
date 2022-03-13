@@ -1,7 +1,8 @@
 <h1>Quem é esse Pokémon?</h1>
 <app-poke-search (throwPokemon)="catchPokemon($event)"></app-poke-search>
+<!-- <h2>{{pokemonList[0].name}}</h2> -->
 <app-poke-table (sendToCard)="catchInfoToCard($event)" [pokemonRow]="pokemonList"></app-poke-table>
-<div *ngIf="uniquePokemon">
-  <app-poke-card></app-poke-card>
+<div *ngIf="isPokemonSet" class="div-for-card">
+  <app-poke-card [pokemonInfo]="uniquePokemon"></app-poke-card>
 </div>
 

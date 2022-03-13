@@ -6,16 +6,13 @@ import { Pokemon } from 'src/app/models/pokemon';
   templateUrl: './poke-home.component.html',
   styleUrls: ['./poke-home.component.scss']
 })
-export class PokeHomeComponent implements OnInit {
+export class PokeHomeComponent {
 
   pokemonList : Pokemon[] = [];
   uniquePokemon : Pokemon;
-  private isPokemonSet : boolean = false;
+  isPokemonSet : boolean = false;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   catchPokemon(event : Pokemon) {
     this.pokemonList.push(event);
@@ -26,18 +23,10 @@ export class PokeHomeComponent implements OnInit {
     this.isPokemonSet = true;
   }
 
-  setPokemonNull() {
-    this.uniquePokemon = null;
-    this.isPokemonSet = false;
-  }
-
-
-  public get pokemon() : Pokemon {
-    if (this.isPokemonSet) {
-      return this.uniquePokemon;
+  turnCardOff(n : number) {
+    if (n < 1) {
+      this.isPokemonSet = false;
     }
-
-    return null;
   }
 
 

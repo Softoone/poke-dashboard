@@ -1,65 +1,183 @@
-.poke-card {
+.div-card {
   display: flex;
   flex-direction: column;
+  width: 250px;
+  height: 400px;
   margin-left: 20px;
-  margin-top: 25px;
-  width: 220px;
-  height: 350px;
-  background-color: yellow;
+  margin-top: 15px;
+  // max-width: 300px;
+  // max-height: 450px;
+}
+
+.poke-card {
+  width: 100%;
+  height: 100%;
   border-style: solid;
   border-width: 4px;
-  border-radius: 14px;
+  border-radius: 10%;
+  font-family: 'Fira Sans','sans-seriff';
 }
 
 .poke-card .title {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-}
+  display: block;
+  // justify-content: space-evenly;
+  // flex-direction: row;
+  height: 10%;
+  width: 100%;
+  color: #fff;
+  text-shadow: 1px 0px;
+  margin: 0;
 
-.poke-card #nome-poke {
-  padding-left: 10px;
-}
+  .types-poke {
+    display: flex;
+    flex-direction: row;
 
-.poke-card #type-poke {
-  padding-right: 10px;
-}
-
-.poke-card #sprite-poke {
-  background-color: #fff;
-  border: solid;
-  border-radius: 25%;
-  height: 130px;
-  width: 90px;
-  align-self: center;
-}
-
-.poke-card .stats-poke {
-  max-width: 100px;
-}
-
-.poke-card #stats-list {
-  list-style-type: none;
-  margin-right: 0;
-}
-
-.poke-card .addit-poke-info {
-  display: flex;
-  justify-content: space-around;
-  height: 20px;
-
-  h4 {
-    font-weight: bold;
+    h4 {
+      margin: 0;
+    }
   }
 }
 
-.poke-card .addit-values {
+.poke-card .sprite-poke {
   display: flex;
-  justify-content: space-around;
-  height: 20px;
+  flex-direction: row;
+  border: solid;
+  border-radius: 25%;
+  height: 30%;
+  width: 40%;
+  margin: 0 auto;
+
+}
+
+.poke-card .stats-poke {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 40%;
+}
+
+.poke-card .stats-list {
+  list-style-type: none;
+  width: 100%;
+  margin-right: 0;
+
+  li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 .poke-card .statline {
-  position: absolute;
-  left: 200px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 50px;
+}
+
+
+.poke-card .addit-info {
+  display: flex;
+  justify-content: space-around;
+  height: 10%;
+  padding-top: 15px;
+}
+
+.poke-card .addit-info-values {
+  display: block;
+  height: 20px;
+  justify-content: center;
+
+
+  h4 {
+    font-weight: bold;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+// .poke-card .addit-info-comp {
+//   display: flex;
+//   justify-content: space-around;
+//   height: 20px;
+// }
+
+
+
+
+// Types custom backgrounds
+
+
+.normal{
+  background-color: #AAAA99;
+}
+
+.fire{
+  background-color: #FF4422;
+}
+
+.water{
+  background-color: #3399FF;
+}
+
+.electric{
+  background-color: #FFCC33;
+}
+
+.grass{
+  background-color: #77CC55;
+}
+
+.ice{
+  background-color: #66CCFF;
+}
+
+.fighting{
+  background-color: #BB5544;
+}
+
+.poison{
+  background-color: #AA5599;
+}
+
+.ground{
+  background-color: #DDBB55;
+}
+
+.flying{
+  background-color: #8899FF;
+}
+
+.psychic{
+  background-color: #FF5599;
+}
+
+.bug{
+  background-color: #AABB22;
+}
+
+.rock{
+  background-color: #BBAA66;
+}
+
+.ghost{
+  background-color: #6666BB;
+}
+
+.dragon{
+  background-color: #7766EE;
+}
+
+.dark{
+  background-color: #775544;
+}
+
+.steel{
+  background-color: #AAAABB;
+}
+
+.fairy{
+  background-color: #EE99EE;
 }

@@ -1,35 +1,31 @@
 import { PokeHomeComponent } from './../poke-home/poke-home.component';
 import { Pokemon } from '../../models/pokemon';
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component, Input, OnDestroy, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-poke-card',
   templateUrl: './poke-card.component.html',
   styleUrls: ['./poke-card.component.scss']
 })
-export class PokeCardComponent implements OnInit {
+export class PokeCardComponent implements OnChanges {
 
   @Input() pokemonInfo : Pokemon;
-  homeC : PokeHomeComponent;
+  pokemonCardRow : Pokemon[] = [];
 
-  constructor(home : PokeHomeComponent,private sanitizer : DomSanitizer) {
-    this.pokemonInfo = home.pokemon;
-    this.homeC = home;
+  constructor(public home : PokeHomeComponent) {
   }
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes.pokemonInfo.currentValue);
+    this.pokemonCardRow.push(this.pokemonInfo);
   }
 
-  disposeCard() {
-    this.homeC.setPokemonNull();
+  disposeCard(index : number) {
+    this.pokemonCardRow.splice(index,1);
+    this.home.turnCardOff(this.pokemonCardRow.length);
   }
 
-  getSanitizerUrl (url : string) {
-    return this.sanitizer.bypassSecurityTrustUrl(url);
-  }
-
-  setClasseCompetitiva(stat : String) : String {
+  setAtributoCompetitivo(stat : String) : String {
     switch (stat) {
       case "HP":
         return "Tank"

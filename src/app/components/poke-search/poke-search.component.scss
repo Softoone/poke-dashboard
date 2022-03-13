@@ -1,0 +1,57 @@
+.search-bar {
+  margin-bottom: 10px;
+
+  form {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+
+  input {
+    border-radius: 10px;
+    width: 75%;
+    height: 30px;
+    border-color: red;
+    border-width: 4px;
+  }
+
+  .form-submit {
+    margin-left: 10px;
+    width: 10%;
+    height: 40px;
+    background-color: blue;
+    color: yellow;
+  }
+
+  .form-submit:hover {
+    cursor: pointer;
+  }
+
+
+  span {
+    font-family: Pokemon;
+    font-size: 20px;
+    text-shadow: 2px 4px black;
+  }
+}
+
+.random-search {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.random-btn {
+  width: 50%;
+  height: 40px;
+  background-color: blue;
+  color: yellow;
+  font-family: Pokemon;
+  font-size: 20px;
+  text-shadow: 2px 4px black;
+  margin-bottom: 50px;
+}
+
+.random-btn:hover {
+  cursor: pointer;
+}

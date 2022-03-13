@@ -1,3 +1,5 @@
+import { RouterModule } from '@angular/router';
+import { MaterialModule } from './../material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -21,14 +23,16 @@ import { PokedexComponent } from './components/pokedex/pokedex.component';
     PokeTableComponent,
     PokeSearchComponent,
     PokeHomeComponent,
-    PokedexComponent
+    PokedexComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MaterialModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

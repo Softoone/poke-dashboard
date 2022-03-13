@@ -17,12 +17,7 @@ export class PokeTableComponent implements OnInit {
   }
 
   openPokemonCard(index : number) {
-    console.log(this.pokemonRow[index])
     this.sendToCard.emit(this.pokemonRow[index])
-  }
-
-  closePokemonCard() {
-
   }
 
 }

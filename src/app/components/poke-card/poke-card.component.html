@@ -1,30 +1,36 @@
-<span class="poke-card">
+<div *ngFor="let pokeInfo of pokemonCardRow; let i = index" class="div-card">
+  <div class="poke-card {{pokeInfo.types[0]}}" (dblclick)="disposeCard(i)">
+    <div class="title">
+      <h4 class="nome-poke">{{pokeInfo.name.toUpperCase()}} #{{pokeInfo.id}}</h4>
+      <div class="types-poke">
+        <h4>{{pokeInfo.types[0].toUpperCase()}}</h4>
+        <h4 *ngIf="pokeInfo.types.length > 1">/ {{pokeInfo.types[1].toUpperCase()}}</h4>
+      </div>
+    </div>
 
-  <span class="title">
-    <h4 id="nome-poke">{{pokemonInfo.name.toUpperCase()}}</h4>
-    <span id="type-poke">{{pokemonInfo.types.join("/")}}</span>
-  </span>
+    <img src={{pokeInfo.sprites.art}} alt="Sprite do Pokemon" class="sprite-poke {{pokeInfo.types[1]}}">
 
-  <img [src]="getSanitizerUrl(pokemonInfo.sprites.art)" alt="Sprite do Pokemon" id="sprite-poke">
+    <div class="stats-poke">
+      <ul class="stats-list"><span>Stats</span>
+        <li>HP<span class="statline">{{pokeInfo.stats.hp}}</span></li>
+        <li>Attack<span class="statline" >{{pokeInfo.stats.attack}}</span></li>
+        <li>Defense<span class="statline" >{{pokeInfo.stats.defense}}</span></li>
+        <li>Sp. Atk<span class="statline" >{{pokeInfo.stats.spAttack}}</span></li>
+        <li>Sp. Def<span class="statline" >{{pokeInfo.stats.spDefense}}</span></li>
+        <li>Speed<span class="statline" >{{pokeInfo.stats.speed}}</span></li>
+      </ul>
+    </div>
 
-  <span class="stats-poke">
-    <ul id="stats-list">Stats
-      <li>HP<span class="statline" >{{pokemonInfo.stats.hp}}</span></li>
-      <li>Attack<span class="statline" >{{pokemonInfo.stats.attack}}</span></li>
-      <li>Defense<span class="statline" >{{pokemonInfo.stats.defense}}</span></li>
-      <li>Sp. Atk<span class="statline" >{{pokemonInfo.stats.spAttack}}</span></li>
-      <li>Sp. Def<span class="statline" >{{pokemonInfo.stats.spDefense}}</span></li>
-      <li>Speed<span class="statline" >{{pokemonInfo.stats.speed}}</span></li>
-    </ul>
-  </span>
+    <div class="addit-info">
+      <div class="addit-info-values">
+        <h4>Peso</h4>
+        <p>{{pokeInfo.weight}} Kg</p>
+      </div>
 
-  <span class="addit-poke-info">
-    <h4>Peso</h4>
-    <h4>Competitivo</h4>
-  </span>
-
-  <span class="addit-values">
-    <p>{{pokemonInfo.weight}} Kg</p>
-    <p>{{setClasseCompetitiva(pokemonInfo.stats.higherStat)}}</p>
-  </span>
-</span>
+      <div class="addit-info-values">
+        <h4>Competitivo</h4>
+        <p>{{setAtributoCompetitivo(pokeInfo.stats.higherStat)}}</p>
+      </div>
+    </div>
+  </div>
+</div>

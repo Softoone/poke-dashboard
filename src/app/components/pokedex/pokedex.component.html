@@ -1,1 +1,42 @@
-<p>pokedex works!</p>
+<nav class="col-12">
+  <button (click)="changeData('')">Gen 1</button>
+  <button (click)="changeData('gen2')">Gen 2</button>
+  <button (click)="changeData('gen3')">Gen 3</button>
+  <button (click)="changeData('gen4')">Gen 4</button>
+  <button (click)="changeData('gen5')">Gen 5</button>
+  <button (click)="changeData('gen6')">Gen 6</button>
+  <button (click)="changeData('gen7')">Gen 7</button>
+  <button (click)="changeData('gen8')">Gen 8</button>
+  <button (click)="changeData('special')">Special Forms</button>
+</nav>
+
+<div *ngIf="isLoaded; else loading "></div>
+<div class="pokedex-list" *ngFor="let poke of activeGeneration">
+  <div class="card-in-list col-3">
+    <span>#{{poke.id}}</span>
+    <div class="sprite">
+      <img [src]="poke.sprites.art" alt="Pokemon Sprite">
+    </div>
+    <h3>{{poke.name}}</h3>
+    <p>{{poke.types.join(" / ")}}</p>
+  </div>
+</div>
+
+<!-- <table mat-table [dataSource]="" class="mat-elevation-z8 demo-table">
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef>No.</th>
+    <td mat-cell *matCellDef="let element">{{element.position}}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef=""></tr>
+  <tr
+      mat-row
+      (click)="clickedRows.add(row)"
+      [class.demo-row-is-clicked]="clickedRows.has(row)"
+      *matRowDef="let row; columns: 2;"
+  ></tr>
+</table> -->
+
+<ng-template #loading>
+  <p>Carregando Pokemons...</p>
+</ng-template>

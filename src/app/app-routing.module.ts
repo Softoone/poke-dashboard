@@ -6,7 +6,7 @@ import { Router, RouterModule, Routes } from "@angular/router";
 var routes : Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   {path: 'dashboard', component: PokeHomeComponent},
-  {path: 'pokedex', component: PokedexComponent}
+  {path: 'pokedex', component: PokedexComponent},
 ]
 
 @NgModule({
