@@ -5,8 +5,10 @@
   height: 400px;
   margin-left: 20px;
   margin-top: 15px;
-  // max-width: 300px;
-  // max-height: 450px;
+}
+
+.div-card:hover {
+  cursor: pointer;
 }
 
 .poke-card {
@@ -20,17 +22,24 @@
 
 .poke-card .title {
   display: block;
-  // justify-content: space-evenly;
-  // flex-direction: row;
   height: 10%;
   width: 100%;
   color: #fff;
   text-shadow: 1px 0px;
-  margin: 0;
+  margin: 0 0 10px;
+
+  h4 {
+    height: 50%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
 
   .types-poke {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    height: 50%;
 
     h4 {
       margin: 0;
@@ -97,15 +106,6 @@
     margin: 0;
   }
 }
-
-// .poke-card .addit-info-comp {
-//   display: flex;
-//   justify-content: space-around;
-//   height: 20px;
-// }
-
-
-
 
 // Types custom backgrounds
 

@@ -1,3 +1,4 @@
+import { PokeCardComponent } from './../poke-card/poke-card.component';
 import { Pokemon } from '../../models/pokemon';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
@@ -10,6 +11,7 @@ export class PokeTableComponent implements OnInit {
 
   @Input() pokemonRow : Pokemon[];
   @Output() sendToCard = new EventEmitter<Pokemon>()
+  displayedColumns: string[] = ['poke-name', 'poke-type', 'poke-ability', 'poke-hstat'];
 
   constructor() { }
 

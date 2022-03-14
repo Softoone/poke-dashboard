@@ -9,7 +9,7 @@ import { Component, OnInit, OnChanges, SimpleChanges, OnDestroy } from '@angular
   templateUrl: './pokedex.component.html',
   styleUrls: ['./pokedex.component.scss']
 })
-export class PokedexComponent implements OnInit,OnDestroy {
+export class PokedexComponent implements OnInit {
 
   gen1 :  Pokemon[];
   gen2 :  Pokemon[];
@@ -23,23 +23,20 @@ export class PokedexComponent implements OnInit,OnDestroy {
   activeGeneration : Pokemon[];
   isLoaded : boolean = false;
 
-  constructor(private pokeService : PokeApiService, private router : Router,private activeRoute : ActivatedRoute) { }
-  ngOnDestroy(): void {
-
-  }
+  constructor(private pokeService : PokeApiService) { }
 
   ngOnInit(): void {
     this.pokeService.getAllPokemon()
     .subscribe(data => {
       console.log(data.results)
       this.getDetailsOfPokemon(data.results)
-      this.activeGeneration = this.gen1;
+      this.changeData('')
     })
 
     this.pokeService.getSpecialForms()
     .subscribe(data => {
       this.getDetailsOfPokemon(data.results)
-      console.log(this.specialForms);
+      console.log(this.activeGeneration);
       this.isLoaded = true;
     })
   }

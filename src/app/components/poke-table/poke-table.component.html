@@ -1,14 +1,19 @@
-<table class="p-table">
-  <tr>
-    <th>English Name</th>
-    <th>Ability(ies)</th>
-    <th>Type(s) </th>
-    <th>Stronger Stat</th>
-  </tr>
-<tr *ngFor="let poke of pokemonRow; let i = index">
-  <td (dblclick)="openPokemonCard(i)">{{poke?.name}}</td>
-  <td>{{poke?.abilities.join(" / ")}}</td>
-  <td>{{poke?.types}}</td>
-  <td>{{poke?.stats.higherStat}}</td>
-</tr>
-</table>
+<div *ngIf="pokemonRow[0] != null">
+  <table>
+    <thead>
+      <th class="head-name">English Name</th>
+      <th class="head-ability">Ability(ies)</th>
+      <th class="head-types">Type(s) </th>
+      <th class="head-hstat">Stronger Stat</th>
+      <th class="head-btn"></th>
+    </thead>
+
+    <tr *ngFor="let poke of pokemonRow; let i = index">
+      <td class="td-name">{{poke?.name}}</td>
+      <td class="td-abilities">{{poke?.abilities.join(" / ")}}</td>
+      <td class="td-types">{{poke?.types}}</td>
+      <td class="td-hstat">{{poke?.stats.higherStat}}</td>
+      <td class="td-btn"><button (click)="openPokemonCard(i)">Open Card</button></td>
+    </tr>
+  </table>
+</div>

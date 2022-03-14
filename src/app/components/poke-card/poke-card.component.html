@@ -1,10 +1,10 @@
 <div *ngFor="let pokeInfo of pokemonCardRow; let i = index" class="div-card">
-  <div class="poke-card {{pokeInfo.types[0]}}" (dblclick)="disposeCard(i)">
+  <div class="poke-card {{pokeInfo.types[0]}}" (click)="disposeCard(i)">
     <div class="title">
       <h4 class="nome-poke">{{pokeInfo.name.toUpperCase()}} #{{pokeInfo.id}}</h4>
       <div class="types-poke">
         <h4>{{pokeInfo.types[0].toUpperCase()}}</h4>
-        <h4 *ngIf="pokeInfo.types.length > 1">/ {{pokeInfo.types[1].toUpperCase()}}</h4>
+        <h4 *ngIf="pokeInfo.types.length > 1">/{{pokeInfo.types[1].toUpperCase()}}</h4>
       </div>
     </div>
 

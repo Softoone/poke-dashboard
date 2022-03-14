@@ -1,0 +1,52 @@
+table {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%;
+  border-top: solid 1px;
+  z-index: 100;
+
+
+  thead {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
+  }
+
+  th {
+    border-right: solid 1px;
+  }
+
+  tr{
+    display: flex;
+    justify-content: space-between;
+    border-top: solid 1px;
+    margin-top: 10px;
+  }
+
+  td {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+}
+
+.head-name, .td-name {
+  width: 15%;
+}
+
+.head-ability, .td-abilities {
+  width: 30%;
+}
+
+.head-types, .td-types {
+  width: 30%;
+}
+
+.head-hstat, .td-hstat {
+  width: 10%;
+}
+
+.head-btn, .td-btn {
+  width: 10%;
+}
